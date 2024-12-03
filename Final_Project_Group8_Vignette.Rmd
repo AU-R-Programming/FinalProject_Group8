@@ -1,0 +1,52 @@
+---
+title: "FinalGroup8 Vignette"
+author: "Group 8"
+date: "2024-12-02"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+The first step to using this package is to install the package from github. To do this, we need to install the devtools package `install.packages(devtools)`. Then we use the following code to download the package from github.
+
+```{r message=FALSE, warning=FALSE}
+library(devtools)
+install_github("AU-R-Programming/FinalProject_Group8")
+library(FinalGroup8)
+```
+
+Now, the package is available for use.
+
+We will demonstrate how to use this function with the `bank.csv` data, which can be found at https://archive.ics.uci.edu/dataset/222/bank+marketing. First, we need to install the data.
+
+```{r message=FALSE, warning=FALSE}
+setwd("~/Desktop/Auburn/Fall 2024/STAT 6210")
+bank <- read.csv("bank.csv", sep = ";")
+head(bank)
+```
+
+As you can see, the bank data contains 17 columns (16 predictors and 1 response variable). In order to use the `logistic_regression` function in the `FinalGroup8` package, we must prepare the data. First, we need to create a data frame that contains only the x (independent) variables.
+
+```{r message=FALSE, warning=FALSE}
+x <- bank[,1:16]
+```
+
+Then, we need to create a vector that contains the y (dependent) variable. We also *must* use the `as.factor` function to redefine the y-variable as a factor.
+
+```{r message=FALSE, warning=FALSE}
+y <- as.factor(bank[,17])
+```
+
+Now, the data has been prepared, and we can utilize the `logistic_regression` function. We run the function and store the results in a list `bank_model`.
+
+```{r message=FALSE, warning=FALSE}
+bank_model <- logistic_regression(x, y, B = 20, conf_level = 0.95)
+```
+
+Now, we can extract all the elements that were created by running the `logistic_regression` function. First, we can look at the estimated regression coefficients.
+
+```{r message=FALSE, warning=FALSE}
+bank_model$coefficient_estimates
+```
