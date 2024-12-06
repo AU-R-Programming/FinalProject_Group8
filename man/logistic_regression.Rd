@@ -39,6 +39,7 @@ These predictions will be used to create a confusion matrix that compares the
 estimated classes to the true classes.
 }
 \examples{
+set.seed(123)
 x <- data.frame(X1 = rnorm(20), X2 = rgamma(20, 5, 1), X3 = rbeta(20, 1, 1), X4 = sample(c('yes', 'no'), 20, TRUE, prob = c(0.7, 0.3)))
 y <- as.factor(sample(c(0,1), 20, replace = TRUE, prob = c(0.3, 0.7)))
 logistic_regression(x, y, B = 50, conf_level = 0.95)
