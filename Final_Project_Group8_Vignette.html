@@ -9,11 +9,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Group 8" />
+<meta name="author" content="Alireza Bidar" />
 
-<meta name="date" content="2024-12-02" />
+<meta name="date" content="2024-12-05" />
 
-<title>FinalGroup8 Vignette</title>
+<title>Untitled</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -350,26 +350,14 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">FinalGroup8 Vignette</h1>
-<h4 class="author">Group 8</h4>
-<h4 class="date">2024-12-02</h4>
+<h1 class="title toc-ignore">Untitled</h1>
+<h4 class="author">Alireza Bidar</h4>
+<h4 class="date">2024-12-05</h4>
 
 </div>
 
 
-<p>The first step to using this package is to install the package from
-github. To do this, we need to install the devtools package
-<code>install.packages(devtools)</code>. Then we use the following code
-to download the package from github.</p>
-<pre class="r"><code>library(devtools)
-install_github(&quot;AU-R-Programming/FinalProject_Group8&quot;)
-library(FinalGroup8)</code></pre>
-<p>Now, the package is available for use.</p>
-<p>We will demonstrate how to use this function with the
-<code>bank.csv</code> data, which can be found at <a href="https://archive.ics.uci.edu/dataset/222/bank+marketing" class="uri">https://archive.ics.uci.edu/dataset/222/bank+marketing</a>.
-First, we need to install the data.</p>
-<pre class="r"><code>setwd(&quot;~/Desktop/Auburn/Fall 2024/STAT 6210&quot;)
-bank &lt;- read.csv(&quot;bank.csv&quot;, sep = &quot;;&quot;)
+<pre class="r"><code>bank &lt;- read.csv(&quot;bank.csv&quot;, sep = &quot;;&quot;)
 head(bank)</code></pre>
 <pre><code>##   age         job marital education default balance housing loan  contact day
 ## 1  30  unemployed married   primary      no    1787      no   no cellular  19
@@ -385,25 +373,10 @@ head(bank)</code></pre>
 ## 4   jun      199        4    -1        0  unknown no
 ## 5   may      226        1    -1        0  unknown no
 ## 6   feb      141        2   176        3  failure no</code></pre>
-<p>As you can see, the bank data contains 17 columns (16 predictors and
-1 response variable). In order to use the
-<code>logistic_regression</code> function in the
-<code>FinalGroup8</code> package, we must prepare the data. First, we
-need to create a data frame that contains only the x (independent)
-variables.</p>
-<pre class="r"><code>x &lt;- bank[,1:16]</code></pre>
-<p>Then, we need to create a vector that contains the y (dependent)
-variable. We also <em>must</em> use the <code>as.factor</code> function
-to redefine the y-variable as a factor.</p>
-<pre class="r"><code>y &lt;- as.factor(bank[,17])</code></pre>
-<p>Now, the data has been prepared, and we can utilize the
-<code>logistic_regression</code> function. We run the function and store
-the results in a list <code>bank_model</code>.</p>
-<pre class="r"><code>bank_model &lt;- logistic_regression(x, y, B = 20, conf_level = 0.95)</code></pre>
-<p>Now, we can extract all the elements that were created by running the
-<code>logistic_regression</code> function. First, we can look at the
-estimated regression coefficients.</p>
-<pre class="r"><code>bank_model$coefficient_estimates</code></pre>
+<pre class="r"><code>x &lt;- bank[,1:16]
+y &lt;- as.factor(bank[,17])
+bank_model &lt;- logistic_regression(x, y, B = 20, conf_level = 0.95)
+bank_model$coefficient_estimates</code></pre>
 <pre><code>##                             [,1]
 ## (Intercept)         0.0665955774
 ## age                -0.0134114806
@@ -448,6 +421,68 @@ estimated regression coefficients.</p>
 ## poutcomeother       0.0545973267
 ## poutcomesuccess     0.4209797644
 ## poutcomeunknown    -0.0237448979</code></pre>
+<pre class="r"><code>intervals &lt;- data.frame(
+  Variable = colnames(bank_model$bootstrap_intervals),
+  t(bank_model$bootstrap_intervals) 
+)[, -1]  
+colnames(intervals) &lt;- c(&quot;2.5%&quot;, &quot;97.5%&quot;)
+print(intervals)</code></pre>
+<pre><code>##                             2.5%         97.5%
+## (Intercept)        -0.0216005359  0.2184406898
+## age                -0.0264621687 -0.0102144279
+## jobblue-collar     -0.0587198677  0.0057319399
+## jobentrepreneur    -0.0554453290  0.0250654475
+## jobhousemaid       -0.0512325054  0.0162452056
+## jobmanagement      -0.0424339363  0.0251531231
+## jobretired          0.0054570598  0.1154171791
+## jobself-employed   -0.0753652190  0.0341094829
+## jobservices        -0.0490819434  0.0159759810
+## jobstudent         -0.0241329689  0.1235011252
+## jobtechnician      -0.0438672854  0.0147882604
+## jobunemployed      -0.0726044390  0.0322272763
+## jobunknown         -0.0297820647  0.1244336592
+## maritalmarried     -0.0690133663 -0.0100286748
+## maritalsingle      -0.0519573961  0.0053932605
+## educationsecondary -0.0192487130  0.0235016138
+## educationtertiary  -0.0116717350  0.0470708324
+## educationunknown   -0.0520385805  0.0132311693
+## defaultyes         -0.0110691527  0.1012139155
+## balance            -0.0003778208 -0.0001421676
+## housingyes         -0.0362289693 -0.0051049664
+## loanyes            -0.0434195640 -0.0234498114
+## contacttelephone   -0.0225040146  0.0470434332
+## contactunknown     -0.1011248900 -0.0517157254
+## day                -0.0017217893  0.0013930987
+## monthaug           -0.0974764926 -0.0030095549
+## monthdec           -0.0859093611  0.2132382831
+## monthfeb           -0.0470765863  0.0706778770
+## monthjan           -0.1548484025 -0.0519766975
+## monthjul           -0.1032303460 -0.0286924667
+## monthjun           -0.0182813710  0.0653957648
+## monthmar            0.0728583739  0.3120139897
+## monthmay           -0.0728947106 -0.0097649779
+## monthnov           -0.1313164851 -0.0350023388
+## monthoct            0.1033611827  0.3026157916
+## monthsep            0.0228520069  0.1794556649
+## duration           -0.0010744034  0.0003860507
+## campaign           -0.0106625704  0.0004911382
+## pdays              -0.0025141350 -0.0004743771
+## previous           -0.0049467733  0.0084127857
+## poutcomeother       0.0109393059  0.0753072158
+## poutcomesuccess     0.3567258007  0.5375906292
+## poutcomeunknown    -0.0834292558  0.0267043514</code></pre>
+<pre class="r"><code>metrices &lt;- data.frame(
+  Variable = names(bank_model$confusion_metrics),  
+  Value = as.vector(t(bank_model$confusion_metrics))
+)
+print(metrices)</code></pre>
+<pre><code>##                Variable       Value
+## 1            prevalence 0.115239991
+## 2              accuracy 0.884538819
+## 3           sensitivity 0.001919386
+## 4           specificity 0.999500000
+## 5  false_discovery_rate 0.666666667
+## 6 diagnostic_odds_ratio 3.844230769</code></pre>
 
 
 

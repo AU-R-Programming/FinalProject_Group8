@@ -21,8 +21,7 @@ Now, the package is available for use.
 
 We will demonstrate how to use this function with the `bank.csv` data, which can be found at https://archive.ics.uci.edu/dataset/222/bank+marketing. First, we need to install the data.
 
-```{r message=FALSE, warning=FALSE}
-setwd("~/Desktop/Auburn/Fall 2024/STAT 6210")
+```{r}
 bank <- read.csv("bank.csv", sep = ";")
 head(bank)
 ```
@@ -50,3 +49,22 @@ Now, we can extract all the elements that were created by running the `logistic_
 ```{r message=FALSE, warning=FALSE}
 bank_model$coefficient_estimates
 ```
+
+Then, we can compute 95% confidence intervals for the coefficients.
+
+```{r}
+ci <- bank_model$bootstrap_intervals
+print(ci)
+```
+
+Finally, We can evaluate the performance of the logistic regression model using the Confusion Matrix.
+
+```{r}
+metrices <- data.frame(
+  Variable = names(bank_model$confusion_metrics),  
+  Value = as.vector(t(bank_model$confusion_metrics))
+)
+print(metrices)
+
+```
+
