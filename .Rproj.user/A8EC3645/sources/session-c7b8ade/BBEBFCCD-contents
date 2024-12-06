@@ -1,0 +1,17 @@
+Package: FinalGroup8
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.1.0
+Authors@R: c(
+    person("John", "Skarmeas", email = "jps0115@auburn.edu", role = c("aut","cre")),
+    person("Kwabena", "Bayity", role = "aut"),
+    person("Alireza", "Bidar", role = "aut")
+    )
+Maintainer: John Skarmeas <jps0115@auburn.edu>
+Description: More about what it does (maybe more than one line)
+    Package contains a function that estimates the coefficients for logistic regression.
+    The function also creates bootstrap confidence intervals, a confusion matrix, and calculates some metrics based on the confusion matrix.
+License: GNU General Public License
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.2
