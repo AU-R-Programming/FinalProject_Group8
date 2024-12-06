@@ -2,12 +2,16 @@
 title: "FinalGroup8 Vignette"
 author: "Group 8"
 date: "2024-12-02"
-output: html_document
+output: 
+  html_document:
+    number_sections: yes
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
+# Installing the Package from GitHub
 
 The first step to using this package is to install the package from github. To do this, we need to install the devtools package `install.packages(devtools)`. Then we use the following code to download the package from github.
 
@@ -19,9 +23,12 @@ library(FinalGroup8)
 
 Now, the package is available for use.
 
+# Data Pre-Processing
+
 We will demonstrate how to use this function with the `bank.csv` data, which can be found at https://archive.ics.uci.edu/dataset/222/bank+marketing. First, we need to install the data.
 
 ```{r}
+setwd("~/Auburn/Fall 2024/STAT 6210/Final Project")
 bank <- read.csv("bank.csv", sep = ";")
 head(bank)
 ```
@@ -38,11 +45,15 @@ Then, we need to create a vector that contains the y (dependent) variable. We al
 y <- as.factor(bank[,17])
 ```
 
+# Using the FinalGroup8 Package for Logistic Regression (for Binary Classification)
+
 Now, the data has been prepared, and we can utilize the `logistic_regression` function. We run the function and store the results in a list `bank_model`.
 
 ```{r message=FALSE, warning=FALSE}
 bank_model <- logistic_regression(x, y, B = 20, conf_level = 0.95)
 ```
+
+## Function Output: Coefficient Estimates
 
 Now, we can extract all the elements that were created by running the `logistic_regression` function. First, we can look at the estimated regression coefficients.
 
@@ -50,21 +61,31 @@ Now, we can extract all the elements that were created by running the `logistic_
 bank_model$coefficient_estimates
 ```
 
+As you can see, there are a lot of coefficients in the logistic regression model. This is due to the fact that the data used (the bank data) has many (9) categorical variables. Each of these categorical variables are converted to dummy variables, which lead to a large amount of coefficients. For example, the month variable has 12 levels, which leads to 11 different coefficient estimates.
+
+## Function Output: Bootstrap Intervals
+
 Then, we can compute 95% confidence intervals for the coefficients.
 
 ```{r}
-ci <- bank_model$bootstrap_intervals
-print(ci)
+bank_model$bootstrap_intervals
 ```
 
-Finally, We can evaluate the performance of the logistic regression model using the Confusion Matrix.
+For our bootstrap intervals, the default parameter values were used `B = 20` and `conf_level = 0.95`, which used 20 bootstrap samples to create 95% bootstrap confidence intervals for each coefficient. 
+
+For each of the 20 bootstrap samples, a random sample of the original data rows were taken with replacement. Then, using this random sample of data rows, coefficients for each variable were estimated. This was done 20 times to get 20 different estimates for each coefficient. The intervals were then constructed by taking the 2.5th percentile and 97.5th percentile of the 20 values for each coefficient.
+
+## Function Output: Confusion Matrix
+
+The next output created by the `logistic_regression` function is a confusion matrix. The confusion matrix for the bank data is shown below.
 
 ```{r}
-metrices <- data.frame(
-  Variable = names(bank_model$confusion_metrics),  
-  Value = as.vector(t(bank_model$confusion_metrics))
-)
-print(metrices)
+bank_model$confusion_matrix
+
 
 ```
+
+This confusion matrix gives an estimate on how accurate your logistic regression function is at predicting the true class.
+
+
 

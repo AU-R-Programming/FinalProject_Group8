@@ -84,7 +84,7 @@ logistic_regression <- function(x, y, B = 20, conf_level = 0.95){
   #find our bootstrap intervals by getting the lower and upper quantiles from each
   #row in our bootstrap matrix
   bootstrap_intervals <- apply(boot_samp_mat, 1, quantile, probs = c((1-conf_level)/2, 1-(1-conf_level)/2))
-  
+
   #make the format of the intervals look nicer
   bootstrap_intervals <- t(bootstrap_intervals)
 
@@ -100,6 +100,8 @@ logistic_regression <- function(x, y, B = 20, conf_level = 0.95){
 
   #using our predictions and the true data, create a confusion matrix.
   confusion <- table(y_matrix, predictions)
+  rownames(confusion) <- unique(y)
+  colnames(confusion) <- unique(y)
 
   #this calculates all the metrics from the confusion matrix
   confusion_metrics <- data.frame(
