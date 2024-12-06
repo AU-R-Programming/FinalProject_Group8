@@ -81,11 +81,24 @@ The next output created by the `logistic_regression` function is a confusion mat
 
 ```{r}
 bank_model$confusion_matrix
-
-
 ```
 
-This confusion matrix gives an estimate on how accurate your logistic regression function is at predicting the true class.
+This confusion matrix gives an estimate on how accurate your logistic regression function is at predicting the true class. It uses the estimated coefficients to predict the class for each data observation.
 
+The function will name the rows and columns of your table based on the class levels in your original data set. In the bank data, our y variable has the classes "yes" and "no."
 
+##Function Output: Confusion Metrics
+
+Finally, our function allows you to look at specific metrics based on your confusion matrix. These metrics are prevalence, accuracy, sensitivity, specificity, false discovery rate, and diagnostic odds ratio.
+
+```{r}
+bank_model$confusion_metrics
+```
+
+- The prevalence is the proportion of positives in the data set. In our data, it refers to the proportion of observations in the data set that are in the "yes" class. 
+- The accuracy is simply the proportion of the data that our logistic regression model classifies correctly.
+- The sensitivity is the true positive rate. This is the proportion of positive observations that were correctly classified as positive.
+- The specificity is the true negative rate. This is the proportion of negative observations that were correctly classified as negative.
+- The false discovery rate is the proportion of your positive predictions that were incorrect.
+- The diagnostic odds ratio is the odds of predicting a positive observation given the subject is truly in the positive class relative to the odds of the test being positive given the subject is truly in the negative class.
 

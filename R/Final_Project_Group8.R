@@ -112,6 +112,8 @@ logistic_regression <- function(x, y, B = 20, conf_level = 0.95){
     false_discovery_rate = confusion[1,2]/sum(confusion[,2]),
     diagnostic_odds_ratio = (confusion[2,2]/confusion[2,1])/(confusion[1,2]/confusion[1,1]))
 
+  confusion_metrics <- t(confusion_metrics)
+
   #these results are returned in a list when the function is run
   list(coefficient_estimates = coef_ests$par,
        bootstrap_intervals = bootstrap_intervals,
