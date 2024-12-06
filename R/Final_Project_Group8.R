@@ -26,6 +26,7 @@
 #' @author John Skarmeas, Kwabena Bayity, Alireza Bidar
 #' @importFrom stats optim
 #' @examples
+#' set.seed(123)
 #' x <- data.frame(X1 = rnorm(20), X2 = rgamma(20, 5, 1), X3 = rbeta(20, 1, 1), X4 = sample(c('yes', 'no'), 20, TRUE, prob = c(0.7, 0.3)))
 #' y <- as.factor(sample(c(0,1), 20, replace = TRUE, prob = c(0.3, 0.7)))
 #' logistic_regression(x, y, B = 50, conf_level = 0.95)
@@ -83,6 +84,9 @@ logistic_regression <- function(x, y, B = 20, conf_level = 0.95){
   #find our bootstrap intervals by getting the lower and upper quantiles from each
   #row in our bootstrap matrix
   bootstrap_intervals <- apply(boot_samp_mat, 1, quantile, probs = c((1-conf_level)/2, 1-(1-conf_level)/2))
+  
+  #make the format of the intervals look nicer
+  bootstrap_intervals <- t(bootstrap_intervals)
 
   #calculate the log-odds based on our coefficient estimates for the full data
   log_odds <- x_matrix %*% coef_ests$par
@@ -113,5 +117,3 @@ logistic_regression <- function(x, y, B = 20, conf_level = 0.95){
        confusion_metrics = confusion_metrics)
 
 }
-
-?logistic_regression
