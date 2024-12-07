@@ -471,63 +471,63 @@ of coefficients.</p>
 <div id="function-output-bootstrap-intervals" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> Function Output:
 Bootstrap Intervals</h2>
-<p>Then, we can compute 95% confidence intervals for the
+<p>Then, we can extract the 95% bootstrap confidence intervals for the
 coefficients.</p>
 <pre class="r"><code>bank_model$bootstrap_intervals</code></pre>
-<pre><code>##                             2.5%         97.5%
-## (Intercept)        -0.0143212429  0.1584290256
-## age                -0.0401853302 -0.0101528032
-## jobblue-collar     -0.0661686452 -0.0111430237
-## jobentrepreneur    -0.0449005003  0.0111840408
-## jobhousemaid       -0.0939840513  0.0347254984
-## jobmanagement      -0.0221178669  0.0282129093
-## jobretired          0.0096321199  0.1083502478
-## jobself-employed   -0.0431056787  0.0188623247
-## jobservices        -0.0547327181  0.0166690309
-## jobstudent          0.0138014267  0.1292366552
-## jobtechnician      -0.0454347939  0.0034299792
-## jobunemployed      -0.0819449485 -0.0136889426
-## jobunknown         -0.0444157701  0.0893953193
-## maritalmarried     -0.0559945386 -0.0074271022
-## maritalsingle      -0.0439668151  0.0048539372
-## educationsecondary -0.0095534145  0.0201481896
-## educationtertiary  -0.0069533460  0.0326810184
-## educationunknown   -0.0730212861  0.0014669674
-## defaultyes          0.0015416141  0.0961883265
-## balance            -0.0004153066 -0.0001356520
-## housingyes         -0.0355409319  0.0019872926
-## loanyes            -0.0462494612 -0.0223052528
-## contacttelephone   -0.0186665451  0.0308165120
-## contactunknown     -0.1068618422 -0.0577096611
-## day                -0.0014799928  0.0041123538
-## monthaug           -0.0989334404  0.0153399700
-## monthdec           -0.1005413794  0.2103184540
-## monthfeb           -0.0231029485  0.0891570385
-## monthjan           -0.1626168794 -0.0566850099
-## monthjul           -0.1002636344 -0.0234928035
-## monthjun           -0.0139679971  0.0643892108
-## monthmar            0.1591834668  0.3359379044
-## monthmay           -0.0711370505 -0.0080575678
-## monthnov           -0.1249312248 -0.0295219715
-## monthoct            0.1614322205  0.3036089790
-## monthsep           -0.0072242663  0.2023744975
-## duration           -0.0011839978  0.0008302383
-## campaign           -0.0035752331  0.0008821858
-## pdays              -0.0015580010  0.0004522346
-## previous           -0.0046128287  0.0071193275
-## poutcomeother       0.0019393152  0.1175279212
-## poutcomesuccess     0.3431292545  0.5303586811
-## poutcomeunknown    -0.0781059219  0.0423717885</code></pre>
+<pre><code>##                            2.5%         97.5%
+## (Intercept)        -0.054798818  0.1747837597
+## age                -0.026779066 -0.0109166341
+## jobblue-collar     -0.060954855 -0.0029593147
+## jobentrepreneur    -0.073507414  0.0270340624
+## jobhousemaid       -0.102276459  0.0064447203
+## jobmanagement      -0.045443599  0.0280388156
+## jobretired          0.002764335  0.0998131156
+## jobself-employed   -0.046069169  0.0286730723
+## jobservices        -0.058141841  0.0293502597
+## jobstudent         -0.001914228  0.1105868062
+## jobtechnician      -0.049981586  0.0146128147
+## jobunemployed      -0.102273771  0.0098357803
+## jobunknown         -0.021253034  0.1379950913
+## maritalmarried     -0.063176047 -0.0186349864
+## maritalsingle      -0.036278971  0.0005202952
+## educationsecondary -0.022713513  0.0213129291
+## educationtertiary  -0.014902942  0.0466226246
+## educationunknown   -0.077577087 -0.0056118681
+## defaultyes          0.007700297  0.0877059101
+## balance            -0.000394361 -0.0001560595
+## housingyes         -0.038464097  0.0147608037
+## loanyes            -0.049191531 -0.0244679856
+## contacttelephone   -0.031732211  0.0328621219
+## contactunknown     -0.100520386 -0.0472567853
+## day                -0.001008131  0.0049710714
+## monthaug           -0.076450710  0.0246640753
+## monthdec           -0.102726604  0.2636856375
+## monthfeb           -0.016567886  0.0639692556
+## monthjan           -0.163585051 -0.0620756253
+## monthjul           -0.085635118 -0.0208298162
+## monthjun           -0.010656739  0.0626989779
+## monthmar            0.071726947  0.3262159025
+## monthmay           -0.082126325  0.0069613458
+## monthnov           -0.113288067 -0.0269506130
+## monthoct            0.138214014  0.3155147968
+## monthsep            0.011399138  0.1919391019
+## duration           -0.001168089  0.0004468835
+## campaign           -0.003257114 -0.0004363905
+## pdays              -0.002100524 -0.0001978991
+## previous           -0.003105062  0.0124592708
+## poutcomeother       0.007317604  0.1349437911
+## poutcomesuccess     0.276510333  0.5195447122
+## poutcomeunknown    -0.098109747  0.0540792582</code></pre>
 <p>For our bootstrap intervals, the default parameter values were used
-(<code>B = 20</code> and <code>conf_level = 0.95</code>), which used 20
+(<code>B = 20</code> and <code>conf_level = 0.95</code>), which uses 20
 bootstrap samples to create 95% bootstrap confidence intervals for each
 coefficient.</p>
 <p>For each of the 20 bootstrap samples, a random sample of the original
-data rows were taken with replacement. Then, using this random sample of
-data rows, coefficients for each variable were estimated. This was done
-20 times to get 20 different estimates for each coefficient. The
-intervals were then constructed by taking the 2.5th percentile and
-97.5th percentile of the 20 values for each coefficient.</p>
+data rows are taken with replacement. Then, using this random sample of
+data rows, coefficients for each variable are estimated. This is done 20
+times to get 20 different estimates for each coefficient. The intervals
+are then constructed by taking the 2.5th percentile and 97.5th
+percentile of the 20 values for each coefficient.</p>
 </div>
 <div id="function-output-confusion-matrix" class="section level2" number="3.3">
 <h2><span class="header-section-number">3.3</span> Function Output:
@@ -540,11 +540,15 @@ is shown below.</p>
 ## y_matrix   no  yes
 ##      no  3998    2
 ##      yes  520    1</code></pre>
-<p>This confusion matrix gives an estimate on how accurate your logistic
+<p>This confusion matrix gives an estimate on how accurate the logistic
 regression function is at predicting the true class. It uses the
-estimated coefficients to predict the class for each data
+estimated coefficients to predict the class for each data observation.
+Then the predicted class is compared to the actual class for each
 observation.</p>
-<p>##Function Output: Confusion Metrics</p>
+</div>
+<div id="function-output-confusion-metrics" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Function Output:
+Confusion Metrics</h2>
 <p>Finally, our function allows you to look at specific metrics based on
 the confusion matrix. These metrics are prevalence, accuracy,
 sensitivity, specificity, false discovery rate, and diagnostic odds
@@ -575,10 +579,10 @@ the odds of the test being positive given the subject is truly in the
 negative class. A higher diagnostic odds ratio is better.</li>
 </ul>
 <p>Something important to note. When I refer to the “positive” class, I
-am referring to the class that is in the second column/second row of
-your confusion matrix (in this case, that is the “yes” class), and when
-I refer to the “negative” class, I am referring to the class that is in
-the first column/first row of your confusion matrix (in this case, that
+am referring to the class that is in the second column/second row of the
+confusion matrix (in this case, that is the “yes” class), and when I
+refer to the “negative” class, I am referring to the class that is in
+the first column/first row of the confusion matrix (in this case, that
 is the “no” class).</p>
 </div>
 </div>

@@ -71,9 +71,9 @@ Then, we can extract the 95% bootstrap confidence intervals for the coefficients
 bank_model$bootstrap_intervals
 ```
 
-For our bootstrap intervals, the default parameter values were used (`B = 20` and `conf_level = 0.95`), which used 20 bootstrap samples to create 95% bootstrap confidence intervals for each coefficient. 
+For our bootstrap intervals, the default parameter values were used (`B = 20` and `conf_level = 0.95`), which uses 20 bootstrap samples to create 95% bootstrap confidence intervals for each coefficient. 
 
-For each of the 20 bootstrap samples, a random sample of the original data rows were taken with replacement. Then, using this random sample of data rows, coefficients for each variable were estimated. This was done 20 times to get 20 different estimates for each coefficient. The intervals were then constructed by taking the 2.5th percentile and 97.5th percentile of the 20 values for each coefficient.
+For each of the 20 bootstrap samples, a random sample of the original data rows are taken with replacement. Then, using this random sample of data rows, coefficients for each variable are estimated. This is done 20 times to get 20 different estimates for each coefficient. The intervals are then constructed by taking the 2.5th percentile and 97.5th percentile of the 20 values for each coefficient.
 
 ## Function Output: Confusion Matrix
 
@@ -83,9 +83,9 @@ The next output created by the `logistic_regression` function is a confusion mat
 bank_model$confusion_matrix
 ```
 
-This confusion matrix gives an estimate on how accurate the logistic regression function is at predicting the true class. It uses the estimated coefficients to predict the class for each data observation.
+This confusion matrix gives an estimate on how accurate the logistic regression function is at predicting the true class. It uses the estimated coefficients to predict the class for each data observation. Then the predicted class is compared to the actual class for each observation.
 
-##Function Output: Confusion Metrics
+## Function Output: Confusion Metrics
 
 Finally, our function allows you to look at specific metrics based on the confusion matrix. These metrics are prevalence, accuracy, sensitivity, specificity, false discovery rate, and diagnostic odds ratio.
 
@@ -100,7 +100,7 @@ bank_model$confusion_metrics
 - The false discovery rate is the proportion of your positive predictions that were actually negative.
 - The diagnostic odds ratio is the odds of predicting a positive observation given the subject is truly in the positive class relative to the odds of the test being positive given the subject is truly in the negative class. A higher diagnostic odds ratio is better.
 
-Something important to note. When I refer to the "positive" class, I am referring to the class that is in the second column/second row of your confusion matrix (in this case, that is the "yes" class), and when I refer to the "negative" class, I am referring to the class that is in the first column/first row of your confusion matrix (in this case, that is the "no" class).
+Something important to note. When I refer to the "positive" class, I am referring to the class that is in the second column/second row of the confusion matrix (in this case, that is the "yes" class), and when I refer to the "negative" class, I am referring to the class that is in the first column/first row of the confusion matrix (in this case, that is the "no" class).
 
 # References
 
