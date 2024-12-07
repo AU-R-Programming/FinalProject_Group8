@@ -365,9 +365,21 @@ github. To do this, we need to install the devtools package
 <code>install.packages(devtools)</code>. Then we use the following code
 to download the package from github.</p>
 <pre class="r"><code>library(devtools)
-install_github(&quot;AU-R-Programming/FinalProject_Group8&quot;)
-library(FinalGroup8)</code></pre>
-<p>Now, the package is available for use.</p>
+install_github(&quot;AU-R-Programming/FinalProject_Group8&quot;)</code></pre>
+<pre><code>## ── R CMD build ─────────────────────────────────────────────────────────────────
+##      checking for file ‘/private/var/folders/kx/cw47nbn949b0m2cmkpzrm_fr0000gn/T/RtmpWUKMx0/remotes7f5a2bb53030/AU-R-Programming-FinalProject_Group8-3ee27b7/DESCRIPTION’ ...  ✔  checking for file ‘/private/var/folders/kx/cw47nbn949b0m2cmkpzrm_fr0000gn/T/RtmpWUKMx0/remotes7f5a2bb53030/AU-R-Programming-FinalProject_Group8-3ee27b7/DESCRIPTION’
+##   ─  preparing ‘FinalGroup8’:
+##   ✔  checking DESCRIPTION meta-information
+##   ─  checking for LF line-endings in source and make files and shell scripts
+##   ─  checking for empty or unneeded directories
+##      Omitted ‘LazyData’ from DESCRIPTION
+##   ─  building ‘FinalGroup8_0.1.0.tar.gz’
+##      
+## </code></pre>
+<pre class="r"><code>library(FinalGroup8)</code></pre>
+<p>Now, the package is available for use. Notice above that the name of
+the GitHub repository is FinalProject_Group8, and the name of the
+package is FinalGroup8.</p>
 </div>
 <div id="data-pre-processing" class="section level1" number="2">
 <h1><span class="header-section-number">2</span> Data
@@ -474,50 +486,50 @@ Bootstrap Intervals</h2>
 <p>Then, we can extract the 95% bootstrap confidence intervals for the
 coefficients.</p>
 <pre class="r"><code>bank_model$bootstrap_intervals</code></pre>
-<pre><code>##                            2.5%         97.5%
-## (Intercept)        -0.054798818  0.1747837597
-## age                -0.026779066 -0.0109166341
-## jobblue-collar     -0.060954855 -0.0029593147
-## jobentrepreneur    -0.073507414  0.0270340624
-## jobhousemaid       -0.102276459  0.0064447203
-## jobmanagement      -0.045443599  0.0280388156
-## jobretired          0.002764335  0.0998131156
-## jobself-employed   -0.046069169  0.0286730723
-## jobservices        -0.058141841  0.0293502597
-## jobstudent         -0.001914228  0.1105868062
-## jobtechnician      -0.049981586  0.0146128147
-## jobunemployed      -0.102273771  0.0098357803
-## jobunknown         -0.021253034  0.1379950913
-## maritalmarried     -0.063176047 -0.0186349864
-## maritalsingle      -0.036278971  0.0005202952
-## educationsecondary -0.022713513  0.0213129291
-## educationtertiary  -0.014902942  0.0466226246
-## educationunknown   -0.077577087 -0.0056118681
-## defaultyes          0.007700297  0.0877059101
-## balance            -0.000394361 -0.0001560595
-## housingyes         -0.038464097  0.0147608037
-## loanyes            -0.049191531 -0.0244679856
-## contacttelephone   -0.031732211  0.0328621219
-## contactunknown     -0.100520386 -0.0472567853
-## day                -0.001008131  0.0049710714
-## monthaug           -0.076450710  0.0246640753
-## monthdec           -0.102726604  0.2636856375
-## monthfeb           -0.016567886  0.0639692556
-## monthjan           -0.163585051 -0.0620756253
-## monthjul           -0.085635118 -0.0208298162
-## monthjun           -0.010656739  0.0626989779
-## monthmar            0.071726947  0.3262159025
-## monthmay           -0.082126325  0.0069613458
-## monthnov           -0.113288067 -0.0269506130
-## monthoct            0.138214014  0.3155147968
-## monthsep            0.011399138  0.1919391019
-## duration           -0.001168089  0.0004468835
-## campaign           -0.003257114 -0.0004363905
-## pdays              -0.002100524 -0.0001978991
-## previous           -0.003105062  0.0124592708
-## poutcomeother       0.007317604  0.1349437911
-## poutcomesuccess     0.276510333  0.5195447122
-## poutcomeunknown    -0.098109747  0.0540792582</code></pre>
+<pre><code>##                             2.5%         97.5%
+## (Intercept)        -0.0265497691  0.1319404984
+## age                -0.0365820705 -0.0109133160
+## jobblue-collar     -0.0586254395 -0.0052655282
+## jobentrepreneur    -0.0419217391  0.0355145786
+## jobhousemaid       -0.0676541315  0.0212822601
+## jobmanagement      -0.0377302654  0.0157404548
+## jobretired          0.0124527379  0.1208010997
+## jobself-employed   -0.0481774888  0.0338358637
+## jobservices        -0.0291191273  0.0154114901
+## jobstudent         -0.0438665961  0.1078426946
+## jobtechnician      -0.0518117987  0.0058720523
+## jobunemployed      -0.0774106239  0.0202172325
+## jobunknown         -0.0318278132  0.0869172579
+## maritalmarried     -0.0686659793 -0.0156843365
+## maritalsingle      -0.0564421857  0.0124976293
+## educationsecondary -0.0281931550  0.0231795519
+## educationtertiary  -0.0049299233  0.0485871633
+## educationunknown   -0.0688842170 -0.0015567128
+## defaultyes          0.0060649555  0.0977936508
+## balance            -0.0004376122 -0.0001433543
+## housingyes         -0.0331319674  0.0053377169
+## loanyes            -0.0525843553 -0.0154656330
+## contacttelephone   -0.0262021743  0.0361151167
+## contactunknown     -0.1019881576 -0.0562698049
+## day                -0.0014395628  0.0007126963
+## monthaug           -0.0771304976  0.0080221010
+## monthdec           -0.0649622203  0.2660348677
+## monthfeb           -0.0091640003  0.0574484787
+## monthjan           -0.1608759048 -0.0498112454
+## monthjul           -0.0856361736 -0.0240928805
+## monthjun           -0.0024523665  0.0658422297
+## monthmar            0.0868872423  0.3323853877
+## monthmay           -0.0669523510  0.0020978165
+## monthnov           -0.0963529221 -0.0260925163
+## monthoct            0.1315831476  0.3282253335
+## monthsep            0.0142110813  0.2186112288
+## duration           -0.0011845303  0.0006889600
+## campaign           -0.0030653939  0.0023634159
+## pdays              -0.0020650513 -0.0001583861
+## previous           -0.0126810634  0.0129073330
+## poutcomeother       0.0157586339  0.0774307170
+## poutcomesuccess     0.3238225162  0.5524122862
+## poutcomeunknown    -0.0865815904  0.0383954328</code></pre>
 <p>For our bootstrap intervals, the default parameter values were used
 (<code>B = 20</code> and <code>conf_level = 0.95</code>), which uses 20
 bootstrap samples to create 95% bootstrap confidence intervals for each

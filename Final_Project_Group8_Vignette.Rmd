@@ -21,7 +21,7 @@ install_github("AU-R-Programming/FinalProject_Group8")
 library(FinalGroup8)
 ```
 
-Now, the package is available for use.
+Now, the package is available for use. Notice above that the name of the GitHub repository is FinalProject_Group8, and the name of the package is FinalGroup8.
 
 # Data Pre-Processing
 
