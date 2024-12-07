@@ -65,7 +65,7 @@ As you can see, there are a lot of coefficients in the logistic regression model
 
 ## Function Output: Bootstrap Intervals
 
-Then, we can compute 95% confidence intervals for the coefficients.
+Then, we can extract the 95% bootstrap confidence intervals for the coefficients.
 
 ```{r}
 bank_model$bootstrap_intervals
@@ -83,7 +83,7 @@ The next output created by the `logistic_regression` function is a confusion mat
 bank_model$confusion_matrix
 ```
 
-This confusion matrix gives an estimate on how accurate your logistic regression function is at predicting the true class. It uses the estimated coefficients to predict the class for each data observation.
+This confusion matrix gives an estimate on how accurate the logistic regression function is at predicting the true class. It uses the estimated coefficients to predict the class for each data observation.
 
 ##Function Output: Confusion Metrics
 
